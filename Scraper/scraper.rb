@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
+require 'date'  
 
 #skill_table = Hash.new(0)
 
@@ -26,26 +27,23 @@ class StackOverflowScraper
   
   
   private 
-  def get_page_uri(page)
-    return URL + page.to_s
-  end
-  
-  def get_skills_for_page
-    page = Nokogiri::HTML(open(get_page_uri(@page)))
-    skills =  page.css('a.post-tag.job-link')
-    skills.each{|a| @skills_table[a.text] += 1}
+    def get_page_uri(page)
+      return URL + page.to_s
+    end
     
-    
-    @more_pages = page.css('a.prev-next.job-link').any?{|a| a.text == 'next'}
-    
-  end
-  
-  
+    def get_skills_for_page
+      page = Nokogiri::HTML(open(get_page_uri(@page)))
+      skills =  page.css('a.post-tag.job-link')
+      skills.each{|a| @skills_table[a.text] += 1}
+      
+      @more_pages = page.css('a.prev-next.job-link').any?{|a| a.text == 'next'}
+      
+    end
 end
 
 scraper = StackOverflowScraper.new
-
-file = File.open('results.dat', 'w')
+today = Date.today
+file = File.open("results_#{today.strftime('%-m-%-d-%y')}.dat", 'w')
 file.write(scraper.get_list.sort_by {|x,v| -v})
 
 
