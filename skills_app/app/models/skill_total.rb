@@ -1,5 +1,6 @@
 class SkillTotal < ActiveRecord::Base
-  DEFAULT_SKILL_COUNT = 20
+  DEFAULT_SKILL_COUNT = 15
+  default_scope -> { order('date DESC, name ASC')}
 
   validates(:date, :presence => true)
   validates(:name, :presence => true)

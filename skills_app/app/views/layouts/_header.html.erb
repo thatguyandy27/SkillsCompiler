@@ -1,12 +1,15 @@
-<header>
-  <div>
-     <%= link_to "Skills Compiler", root_path, id: "logo" %>
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class='navbar-inner'>
+<!--    <div class="container">-->
+      <%= link_to "Skills Compiler", root_path, id: "logo" %>
+      <nav>
+        <ul class="nav pull-right">
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Daily Skill Totals", skill_totals_path %></li>
+          <li><%= link_to "About", about_path %></li>
+          <li><%= link_to "Contact", contact_path %></li>
+        </ul>
+      </nav>
+    <!--</div>-->
   </div>
-  <nav>
-    <ul>
-      <li><%= link_to "Home", root_path %></li>
-      <li><%= link_to "About", about_path %></li>
-      <li><%= link_to "Contact", contact_path %></li>
-    </ul>
-  </nav>
 </header>
