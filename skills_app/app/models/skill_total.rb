@@ -1,5 +1,5 @@
 class SkillTotal < ActiveRecord::Base
-  DEFAULT_SKILL_COUNT = 25
+  DEFAULT_SKILL_COUNT = 20
 
   validates(:date, :presence => true)
   validates(:name, :presence => true)

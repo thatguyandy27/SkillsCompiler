@@ -1,4 +1,4 @@
 
 <% if @chart == :column %>
-  <%= column_chart @chart_data.group(:name).sum(:count) %>
+  <%= column_chart totals_by_name_charts_path  %>
 <% end %>
