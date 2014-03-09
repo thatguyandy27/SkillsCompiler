@@ -6,9 +6,10 @@ SkillsApp::Application.routes.draw do
   
   resources :skill_totals, :only => [:index, :show]
 
-  resources :charts do
+  resources :charts, :only=>[:show] do
     collection do
       get :totals_by_name
+      get :totals_by_day
     end
   end
 
