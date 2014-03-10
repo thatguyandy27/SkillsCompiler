@@ -1,6 +1,7 @@
 class SkillTotal < ActiveRecord::Base
   DEFAULT_SKILL_COUNT = 15
-  default_scope -> { order('date DESC, name ASC')}
+  #default_scope -> { order('date DESC, name ASC')}
+  scope :daily_total, -> { order('date DESC, name ASC')}
 
   validates(:date, :presence => true)
   validates(:name, :presence => true)
@@ -8,6 +9,16 @@ class SkillTotal < ActiveRecord::Base
 
   def self.filter_by_name_and_dates(name, start_date, end_date)
     return where("name IN (?) AND date >= ? AND date <= ?", name, start_date, end_date)
+  end
+
+  def self.search(skill_name)
+
+    if skill_name
+      skill_name.downcase!
+      skill_name = find(:all, :conditions => ['name LIKE ?', "%#{skill_name}%"])
+    else
+      find(:all)  
+    end
   end
 
   def self.top_skills()

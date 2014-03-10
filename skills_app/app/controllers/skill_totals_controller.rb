@@ -5,6 +5,7 @@ class SkillTotalsController < ApplicationController
   end
 
   def index
-    @skill_totals = SkillTotal.paginate(:page => params[:page])
+    @skill_totals = SkillTotal.daily_total.
+      paginate(:page => params[:page]).search(params[:skills])
   end
 end

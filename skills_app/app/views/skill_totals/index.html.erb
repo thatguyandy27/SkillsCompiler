@@ -2,14 +2,20 @@
 
 <section class="skill_totals">
 
+  <%= form_tag skill_totals_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :skills, params[:skills] %>
+      <%= submit_tag "Search", :name=>nil %>
+    </p>
+  <% end %>
 
-  <table >
+  <table > 
     <tr>
       <th class='name'>Skill</th>
       <th class='date'>Date</th>
       <th class='count'>Daily Total</th>
     </tr>
-
+ 
     <% @skill_totals.each do |skill_total| %>
     <tr>
       <td class='name'><%= skill_total.name %></td>
