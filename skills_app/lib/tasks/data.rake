@@ -17,10 +17,12 @@ namespace :db do
   private
     def parse_file(file_name)
       date = get_date(file_name)
-      file_data = eval(File.open(file_name, "r").to_a.join(''))
-      if file_data
-        file_data.each do |pair|
-          create_skill_total(pair[0], pair[1], date)
+      if !SkillTotal.find_by_date(date)
+        file_data = eval(File.open(file_name, "r").to_a.join(''))
+        if file_data
+          file_data.each do |pair|
+            create_skill_total(pair[0], pair[1], date)
+          end
         end
       end
     end

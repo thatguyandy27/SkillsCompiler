@@ -1,7 +1,6 @@
-
 <% if @chart == :column %>
-  <%= column_chart totals_by_name_charts_path  %>
+  <%= column_chart totals_by_name_charts_path(params) %>
 <% elsif @chart == :line %>
-  <%= line_chart totals_by_day_charts_path %>
+  <%= line_chart totals_by_day_charts_path(params) %>
   
 <% end %>

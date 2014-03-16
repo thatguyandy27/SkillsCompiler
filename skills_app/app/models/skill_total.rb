@@ -1,5 +1,8 @@
 class SkillTotal < ActiveRecord::Base
-  DEFAULT_SKILL_COUNT = 15
+  DEFAULT_SKILL_COUNT = 20
+  def self.DEFAULT_SKILL_COUNT
+    return DEFAULT_SKILL_COUNT
+  end
   #default_scope -> { order('date DESC, name ASC')}
   scope :daily_total, -> { order('date DESC, name ASC')}
 
@@ -19,6 +22,10 @@ class SkillTotal < ActiveRecord::Base
     else
       find(:all)  
     end
+  end
+
+  def self.skills_and_count()
+    return select(:name, "sum(count) as total").group(:name).order("SUM(count) DESC")
   end
 
   def self.top_skills()

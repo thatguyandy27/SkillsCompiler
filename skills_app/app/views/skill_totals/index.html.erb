@@ -2,7 +2,7 @@
 
 <section class="skill_totals">
 
-  <%= form_tag skill_totals_path, :method => 'get' do %>
+  <%= form_tag skill_totals_path, :method => 'get', :class =>'search' do %>
     <p>
       <%= text_field_tag :skills, params[:skills] %>
       <%= submit_tag "Search", :name=>nil %>

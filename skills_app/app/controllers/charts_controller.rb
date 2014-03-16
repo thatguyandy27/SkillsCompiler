@@ -26,7 +26,14 @@ class ChartsController < ApplicationController
   
   private 
     def set_data
-      @skills = params[:skills] || SkillTotal.top_skills#SkillTotal.uniq.pluck(:name)
+      @skills = params[:skills] 
+      if !@skills.blank?
+        @skills = @skills.split(/,/).map do |skill| 
+          skill.strip.downcase
+        end
+      else
+        @skills = SkillTotal.top_skills#SkillTotal.uniq.pluck(:name)
+      end
       @startdate = params[:min] || SkillTotal.minimum(:date)
       @enddate = params[:max] || SkillTotal.maximum(:date)
 

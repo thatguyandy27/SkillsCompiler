@@ -1,0 +1,28 @@
+<h1>Skills</h1>
+
+<section class='skills'>
+
+  <%= form_tag skills_path, :method => 'get', :class =>'search' do %>
+    <p>
+      <%= text_field_tag :skills, params[:skills] %>
+      <%= submit_tag "Search", :name=>nil %>
+    </p>
+  <% end %>
+
+
+  <table > 
+    <tr>
+      <th class='name'>Skill</th>
+      <th class='total'>Total</th>
+    </tr>
+    <% @skills.each do |skill| %>
+    <tr>
+      <td class='name'><%= link_to skill.name, chart_path(2, :skills => skill.name)  %></td>
+      <td class='total'><%= skill.total %></td>
+    </tr>
+    <% end %>
+ 
+  </table>
+
+  <%= will_paginate %>
+</section>

@@ -5,6 +5,7 @@ SkillsApp::Application.routes.draw do
   match '/contact', :to => 'static_pages#contact', :via => 'get'
   
   resources :skill_totals, :only => [:index, :show]
+  resources :skills, :only => [:index]
 
   resources :charts, :only=>[:show] do
     collection do

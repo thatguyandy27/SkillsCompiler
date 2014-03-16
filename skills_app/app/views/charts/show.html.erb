@@ -1,3 +1,11 @@
-<%= render 'charts/chart' %>
+<section class="chart">
+  <%= form_tag '', :method => 'get', :class=>'search' do %>
+    <p>
+      <%= text_field_tag :skills, params[:skills], :placeholder =>'Accepts a comma delimited list.  E.g. javascript, java, c#' %>
+      <%= submit_tag "Search", :name=>nil %>
 
-<%= @skills %>
+    </p>
+  <% end %>
+
+  <%= render 'charts/chart' %>
+</section>
