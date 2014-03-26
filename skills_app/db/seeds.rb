@@ -1,4 +1,7 @@
 require "#{Rails.root}/db/data_reader"
-path = '#{Rails.root}/db/data/*.dat'
+puts "start"
+path = "#{Rails.root}/db/data/*.dat"
+puts path
 reader = ScrapedDataReader.new(path)
 reader.read_files()
+puts "done"
