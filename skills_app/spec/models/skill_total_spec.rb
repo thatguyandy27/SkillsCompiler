@@ -40,4 +40,7 @@ describe SkillTotal do
     it {should_not be_valid}
   end
 
+  describe "Retrieve list of skills" do
+    
+  end
 end

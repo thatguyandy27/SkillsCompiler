@@ -18,7 +18,7 @@ class SkillTotal < ActiveRecord::Base
 
     if skill_name
       skill_name.downcase!
-      skill_name = find(:all, :conditions => ['name LIKE ?', "%#{skill_name}%"])
+      skill_name = find(:all, :conditions => ['name LIKE ?', "#{skill_name}"])
     else
       find(:all)  
     end
@@ -27,6 +27,12 @@ class SkillTotal < ActiveRecord::Base
   def self.skills_and_count()
     return select(:name, "sum(count) as total").group(:name).order("SUM(count) DESC")
   end
+
+  def self.retrieve_skills()
+    return select(:name).group(:name).order(:name).map(&:name)
+  end
+
+  
 
   def self.top_skills()
     skills = select(:name).group(:name).
