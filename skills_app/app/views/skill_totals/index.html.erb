@@ -6,8 +6,8 @@
 
   <%= form_tag skill_totals_path, :method => 'get', :class =>'search' do %>
     <p>
-      <%= text_field_tag :skills, params[:skills], :id=> 'skills_autocomplete',
-        :data => {:skills =>  SkillTotal.retrieve_skills() } %>
+      <%= text_field_tag :skills, params[:skills], :class=> 'autocomplete',
+        :data => {:autocomplete_data =>  SkillTotal.retrieve_skills() } %>
       <%= submit_tag "Search", :name=>nil %>
     </p>
   <% end %>
@@ -31,13 +31,3 @@
 
   <%= will_paginate %>
 </section>
-
-<% content_for :javascript do %>
-  <script type='text/javascript'>
-    $(document).ready(function(){
-      $("#skills_autocomplete").autocomplete({
-        source: $("#skills_autocomplete").data("skills")
-      });
-    });
-  </script>
-<% end %>
