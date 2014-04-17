@@ -1,4 +1,11 @@
 <section class="chart">
+  <% if @chart == :column %>
+    <h1>Skill Posting Totals</h1>
+    <p>This chart displays the total # of times a skill has been listed in a job posting.  To search for your own list, add a comma delimited list of skills below, and search.</p>
+  <% elsif @chart == :line %> 
+    <h1>Skill Posting By Day</h1>
+    <p>This chart displays the times by day a skill has been listed in a job posting.  To search for your own list, add a comma delimited list of skills below, and search.</p>
+  <% end %>
   <%= form_tag '', :method => 'get', :class=>'search' do %>
     <p>
       <%= text_field_tag :skills, params[:skills], :placeholder =>'Accepts a comma delimited list.  E.g. javascript, java, c#' %>
