@@ -3,7 +3,7 @@ namespace :data do
   #Think about changing this to be N number of days
   #Think about combining the list of jobs.
   desc "Creates trend records for the current day"
-  task :trends => :environment do
+  task :trends => [:environment, :import] do
     get_trends()
   end
 
@@ -67,10 +67,7 @@ namespace :data do
 
     def create_skill_trends(trending_up, trending_down)
       SkillTrend.delete_all
-      puts trending_up
-      puts trending_down
       trending_up.each do |trend| 
-        puts trend.trend_percentage
         trend.save
       end
       trending_down.each {|trend| trend.save}
