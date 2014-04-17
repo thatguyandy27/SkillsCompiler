@@ -12,7 +12,7 @@
     <% @top_trends.each do |trend| %>
     <tr>
       <td class='name'><%= link_to trend.name, chart_path(2, :skills => trend.name)  %></td>
-      <td class='trend_percentage hot'><%= trend.trend_percentage %></td>
+      <td class='trend_percentage hot'><%= trend.trend_percentage.round(2) %></td>
     </tr>
     <% end %>
  
@@ -30,7 +30,7 @@
     <% @bottom_trends.each do |trend| %>
     <tr>
       <td class='name'><%= link_to trend.name, chart_path(2, :skills => trend.name)  %></td>
-      <td class='trend_percentage cold'><%= trend.trend_percentage %></td>
+      <td class='trend_percentage cold'><%= trend.trend_percentage.round(2) %></td>
     </tr>
     <% end %>
  
