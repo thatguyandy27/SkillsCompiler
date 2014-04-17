@@ -1,4 +1,10 @@
+<h1>Skills App</h1>
+<p>This application retrieves data from various sites (one) and compiles the number of times a particluar skill is referenced in job postings.  Each day the site is updated with the new skills and the trends are recalculated.  So come back daily or weekly to see how your skills are trending, and what skills are <em class='hot'>hot!</em> and what skills are <em class='cold'>cold.</em></p>
+<br />
 
+<h2>Top <%= SkillTotal.DEFAULT_SKILL_COUNT %> skills</h2>
+<p>Top skills and how many times the skill has used in jobs since this site's inception </p>
 
-<h1>Top <%= SkillTotal.DEFAULT_SKILL_COUNT %> skills</h1>
-<%= render 'charts/chart' %>
+<%= render 'charts/totals_chart' %>
+
+<%= render 'charts/top_trend_chart' %>

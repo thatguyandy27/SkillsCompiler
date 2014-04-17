@@ -1,0 +1,39 @@
+<h1>Trending Skills</h1>
+<section class='skill_trends'>
+
+  <h2>Top trending skills</h2>
+  <p>Top skills that are trending based on the # of postings compared to the current # of postings for that skill</p>
+
+  <table > 
+    <tr>
+      <th class='name'>Skill</th>
+      <th class='trend_percentage'>Total</th>
+    </tr>
+    <% @top_trends.each do |trend| %>
+    <tr>
+      <td class='name'><%= link_to trend.name, chart_path(2, :skills => trend.name)  %></td>
+      <td class='trend_percentage hot'><%= trend.trend_percentage %></td>
+    </tr>
+    <% end %>
+ 
+  </table>
+
+  <br />
+  <h2>Bottom trending skills</h2>
+  <p>Bottom skills that are trending based on the # of postings compared to the current # of postings for that skill</p>
+
+  <table > 
+    <tr>
+      <th class='name'>Skill</th>
+      <th class='trend_percentage'>Total</th>
+    </tr>
+    <% @bottom_trends.each do |trend| %>
+    <tr>
+      <td class='name'><%= link_to trend.name, chart_path(2, :skills => trend.name)  %></td>
+      <td class='trend_percentage cold'><%= trend.trend_percentage %></td>
+    </tr>
+    <% end %>
+ 
+  </table>
+
+</section>

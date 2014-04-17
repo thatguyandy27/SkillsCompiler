@@ -1,5 +1,7 @@
 namespace :data do
 
+  #Think about changing this to be N number of days
+  #Think about combining the list of jobs.
   desc "Creates trend records for the current day"
   task :trends => :environment do
     get_trends()

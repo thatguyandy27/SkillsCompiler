@@ -23,7 +23,38 @@ class ChartsController < ApplicationController
 
     render :json => @chart_data
   end
+
+  def top_trends
+    @startdate = params[:min] || SkillTotal.minimum(:date)
+    @enddate = params[:max] || SkillTotal.maximum(:date)
+    @skills = SkillTrend.top_trends.trending_skills()
+
+    data = SkillTotal.filter_by_name_and_dates(@skills, @startdate, @enddate).group_by(&:name)
+    @chart_data = data.map do |key, value| 
+      {:name=> key, :data => value.map {|skill_total| [skill_total.date, skill_total.count]}}
+
+    end
+
+    render :json => @chart_data
+
+  end
   
+  def bottom_trends
+    @startdate = params[:min] || SkillTotal.minimum(:date)
+    @enddate = params[:max] || SkillTotal.maximum(:date)
+    @skills = SkillTrend.bottom_trends.trending_skills()
+
+    data = SkillTotal.filter_by_name_and_dates(@skills, @startdate, @enddate).group_by(&:name)
+    @chart_data = data.map do |key, value| 
+      {:name=> key, :data => value.map {|skill_total| [skill_total.date, skill_total.count]}}
+
+    end
+
+    render :json => @chart_data
+
+  end
+
+
   private 
     def set_data
       @skills = params[:skills] 
