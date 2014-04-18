@@ -8,10 +8,9 @@
     </small>
     <nav>
         <ul>
-            <li><div class="fb-like" data-href="http://developerskills.herokuapp.com/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div></li> 
             <li><a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a></li>
             <li><div class="g-plusone" data-annotation="inline" data-width="300"></div></li>
-
+        
         </ul>
     </nav>
 </footer>
@@ -36,22 +35,22 @@
     ga('create', 'UA-39576867-2', 'developerskills.herokuapp.com');
     ga('send', 'pageview');
 
-    };
-
-    // facebook
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
+        // facebook
+    
     //twitter
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    };
+
 }(this));
 
 $(document).ready(App.social);
-$(document).on('page:load', App.social);
+$(document).on('page:load',function(){
+    twttr.widgets.load() ;
+    ga('create', 'UA-39576867-2', 'developerskills.herokuapp.com');
+    ga('send', 'pageview');
+
+        // facebook
+
+});
 
 </script>
