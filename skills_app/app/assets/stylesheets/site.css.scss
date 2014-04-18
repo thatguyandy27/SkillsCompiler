@@ -1,4 +1,5 @@
 @import "bootstrap";
+$grayMediumLight: #eaeaea;
 
 html{
     overflow-y:scroll;
@@ -87,4 +88,31 @@ p{
 .cold
 {
     color:blue;
+}
+
+footer{
+    margin-top:45px;
+    padding-top: 5px;
+    border-top:1px solid $grayMediumLight;
+    color:$grayLight;
+    a{
+        color:$gray;
+        &:hover{
+            color:$grayDarker;
+        }
+
+    }
+
+    small{
+        float: left;
+    }
+    ul{
+        float: right;
+        list-style: none;
+        li{
+            float:left;
+            margin-left: 10px;
+        }
+    }
+
 }
