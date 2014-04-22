@@ -18,11 +18,14 @@
     <tr>
       <th class='name'>Skill</th>
       <th class='total'>Total</th>
+      <th class='postings'>Today's Postings</th>
     </tr>
     <% @skills.each do |skill| %>
     <tr>
       <td class='name'><%= link_to skill.name, chart_path(2, :skills => skill.name)  %></td>
       <td class='total'><%= skill.total %></td>
+      <td class='postings'><%= link_to careers_link(skill.name) %></td>
+
     </tr>
     <% end %>
  
