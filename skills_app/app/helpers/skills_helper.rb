@@ -1,8 +1,9 @@
 module SkillsHelper
 
-  def careers_link(skill_name, options={})
+  def careers_link(skill_name, link_name=nil, options={})
     options[:class] ||= "button"
-    return link_to("open", "http://careers.stackoverflow.com/jobs/tag/" + skill_name,
+    link_name ||= "Current #{skill_name} postings"
+    return link_to(link_name, "http://careers.stackoverflow.com/jobs/tag/" + skill_name,
       options)
   end
 
